@@ -1,0 +1,5 @@
+campana_id,nombre,tipo,fecha_inicio,fecha_fin,canal,presupuesto,ventas_ano_anterior
+1,Rebajas Verano 2024,rebajas,2024-07-01,2024-07-21,instagram,48000.0,512340.0
+2,Rebajas Invierno 2024,rebajas,2024-01-07,2024-01-28,email,52000.0,498120.0
+3,Black Friday 2023,black_friday,2023-11-24,2023-11-27,google,61.000 €,405780.0
+4,Vuelta al Cole 2023,promo,2023-09-01,2023-09-15,instagram,22000.0,176900.0
