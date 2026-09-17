@@ -12,3 +12,10 @@ __pycache__/
 
 /brightcart_datasets.zip
 
+
+# Ignorar .csv en datos/ y en cualquier subcarpeta interna
+data/raw/*.csv
+data/processed/*.csv
+
+# Excepción para el archivo de documentación
+!data/README.md
