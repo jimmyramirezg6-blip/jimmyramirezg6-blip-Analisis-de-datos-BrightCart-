@@ -2,7 +2,7 @@
 
 proyecto en proceso ...
 
-etapa: exploración inicial de las base de datos
+etapa: limpieza de datos
 
 ## 📌 Problema de negocio
 
