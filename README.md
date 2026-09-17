@@ -2,7 +2,7 @@
 
 proyecto en proceso ...
 
-etapa: limpieza de datos
+etapa: limpieza de datos..
 
 ## 📌 Problema de negocio
 
