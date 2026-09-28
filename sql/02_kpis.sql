@@ -88,6 +88,56 @@ SELECT
 	ROUND(((r.ticket - p.ticket)/p.ticket * 100)::NUMERIC, 1) AS crecimiento_ticket
 FROM previa p, rebajas r; 
 
+-- ticket por canal
+SELECT 
+	s.canal,
+	ROUND(
+		SUM(ol.cantidad * ol.precio_unitario::NUMERIC * (1 - ol.descuento_pct::NUMERIC))
+		/ COUNT(DISTINCT ol.pedido_id), 2
+	) AS ticket_medio
+FROM order_lines ol
+JOIN sales s ON ol.pedido_id = s.pedido_id 
+WHERE s.campana_id = 1
+GROUP BY s.canal
+ORDER BY ticket_medio DESC;
 
---
+
+-- Ticket promedio, mínimo y máximo
+WITH ticket_por_pedido AS (
+	SELECT 
+		ol.pedido_id, 
+		SUM(ol.cantidad * ol.precio_unitario * (1 - ol.descuento_pct)) AS ticket
+	FROM order_lines ol
+	JOIN sales s ON ol.pedido_id = s.pedido_id
+	WHERE s.campana_id = 1 
+	GROUP BY ol.pedido_id
+)
+SELECT
+	ROUND(AVG(ticket::NUMERIC),2) AS ticket_medio, 
+	ROUND((percentile_cont(0.5) WITHIN GROUP (ORDER BY ticket::NUMERIC))::NUMERIC,2) AS ticket_típico, 
+	ROUND(MAX(ticket::NUMERIC),2) AS pedido_más_alto
+FROM ticket_por_pedido
+
+-- Método de pagos en rebajas
+SELECT
+	s.metodo_pago, 
+	SUM(ol.cantidad) AS unidades, 
+	ROUND(
+		SUM(ol.cantidad) * 100.0 / SUM(SUM(ol.cantidad)) OVER (), 2
+	)
+
+FROM order_lines ol
+JOIN sales s ON ol.pedido_id = s.pedido_id
+WHERE s.campana_id = 1
+GROUP BY s.metodo_pago
+ORDER BY unidades DESC
+
+
+
+
+
+	
+	
+
+
 	
