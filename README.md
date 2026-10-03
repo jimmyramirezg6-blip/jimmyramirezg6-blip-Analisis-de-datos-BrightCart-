@@ -20,7 +20,19 @@ Sales volume alone is not enough to judge performance. A product can lead revenu
 ### ⭐ Recommendation
 Pause or reduce restocking of `Vestido Alma` until sizing and return drivers are addressed.
 
-### Figures 
+### 📈 Key Visuals
+### Revenue by category
+![Revenue by category](outputs/figures/ingreso_por_categoria.png)
+
+### Top products by units
+![Top products by units](outputs/figures/productos_por_unidades.png)
+
+### Vestido Alma margin
+![Vestido Alma margin](outputs/figures/Vestido_alma_datos.png)
+
+### Vestido Alma returns by size
+![Vestido Alma returns by size](outputs/figures/devoluciones_vestido_alma.png)
+
 
 ## 📁 Project structure
 ```
