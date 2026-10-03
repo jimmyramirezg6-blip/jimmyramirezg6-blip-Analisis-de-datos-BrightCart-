@@ -1,5 +1,5 @@
 -- ============================================================
--- PROJECT: BrigthCart Main KPIs Analysis
+-- PROJECT: BrightCart Main KPIs Analysis
 -- Phase 1: staging
 -- ============================================================
 

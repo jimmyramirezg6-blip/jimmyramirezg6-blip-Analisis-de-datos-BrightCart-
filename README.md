@@ -1,6 +1,6 @@
 ## 📊 BrightCart Data Analysis Project
 
-In proccess ...
+In progress ...
 
 
 ## 📁 Project structure
@@ -70,9 +70,9 @@ This will create the necessary tables, load the data from `data/processed/`, and
 - The CSV files present in `data/processed/`
 
 
-## 📌 Problema de negocio
+## 📌 Business Problem
 
-The aim is to ensure the effectiveness of the campaigns implemented by the company.
+The goal is to ensure the effectiveness of the campaigns implemented by the company.
 ## 👤 Autor
 
 Jimmy Ramírez — [LinkedIn](https://www.linkedin.com/in/jimmy-ramirez-g) · [GitHub](https://github.com/jimmyramirezg6-blip)

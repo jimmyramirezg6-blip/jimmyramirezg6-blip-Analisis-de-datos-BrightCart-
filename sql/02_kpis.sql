@@ -1,5 +1,5 @@
 
--- Ingresos y unidades por categoria en la camapaña, de mayor a menor
+-- Revenue and units by category in the campaign, from highest to lowest
 SELECT
 	pr.categoria, 
 	ROUND(
@@ -14,7 +14,7 @@ WHERE s.campana_id = 1
 GROUP BY pr.categoria
 ORDER BY income DESC
 
--- Top 5 productos por unidades en la campaña 
+-- Top 5 products by units in the campaign
 SELECT
 	pr.nombre, 
 	SUM(ol.cantidad) AS unidades
@@ -26,7 +26,7 @@ GROUP BY pr.nombre
 ORDER BY unidades DESC
 LIMIT 5;
 
--- Conversión por canal. ¿Qué canal convierte mejor?
+-- Conversion by channel. Which channel converts best?
 WITH ses AS (
 	SELECT canal, SUM(sesiones) AS sesiones
 	FROM web_visits
@@ -47,7 +47,7 @@ FROM ped
 JOIN ses ON ped.canal = ses.canal
 ORDER BY conversion_ DESC; 
 
--- top 3 por unidades y top 3 por ingresos 
+-- Top 3 by units and top 3 by revenue
 
 WITH prod AS (
 	SELECT 
@@ -71,11 +71,11 @@ UNION ALL
 	FROM prod ORDER BY income DESC LIMIT 3
 );
 
--- Peso del vestido Alma en la campana
+-- Share of Vestido Alma in the campaign
 SELECT 
 	SUM(ol.cantidad) AS uds_campana, 
 	SUM(CASE WHEN pr.nombre = 'Vestido Alma' THEN ol.cantidad ELSE 0 END) AS uds_alma, 
-	-- Alma sobre el total de la campaña
+  -- Alma as a share of the full campaign
 	ROUND(
 		SUM(CASE WHEN pr.nombre = 'Vestido Alma' THEN ol.cantidad ELSE 0 END) * 100.0
 		/ SUM(ol.cantidad), 1
@@ -89,7 +89,7 @@ JOIN sales s ON ol.pedido_id = s.pedido_id
 JOIN products pr ON ol.producto_id = pr.producto_id
 WHERE s.campana_id = 1;
 
--- Tráfico pro canal - campaña (1 -21 jul)
+-- Traffic by channel - campaign (Jul 1-21)
 SELECT 
 	canal,
 	SUM(sesiones) AS sesiones
@@ -98,7 +98,7 @@ WHERE fecha BETWEEN DATE '2024-07-01' AND DATE '2024-07-21'
 GROUP BY canal
 ORDER BY sesiones DESC;
 
--- Concentración de ventas
+-- Sales concentration
 WITH por_producto AS (
 	SELECT 
 		ol.producto_id, 
@@ -127,7 +127,7 @@ SELECT
 	) AS top50_pct
 FROM rankeado; 
 
--- Ingresos por colección en la campaña 
+-- Revenue by collection in the campaign
 SELECT
 	pr.coleccion,
 	ROUND(

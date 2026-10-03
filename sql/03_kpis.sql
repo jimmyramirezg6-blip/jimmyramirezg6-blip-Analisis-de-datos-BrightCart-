@@ -1,4 +1,4 @@
--- Tasa de devolución global
+-- Overall return rate
 SELECT 
 	COUNT(*) AS devoluciones, 
 	(SELECT COUNT(*) FROM order_lines) AS lineas_vendidas, 
@@ -9,7 +9,7 @@ FROM refunds r
 WHERE r.linea_id IN (SELECT linea_id FROM order_lines);
 
 
--- Tasa de devolución por categoría
+-- Return rate by category
 WITH lineas_cat AS (
 	SELECT
 		ol.linea_id,
@@ -30,7 +30,7 @@ GROUP BY GROUPING SETS ((lc.categoria), ())
 ORDER BY (lc.categoria IS NULL) DESC, tasa_pct DESC;
 
 
--- Número uno en ventas y número uno en devoluciones
+-- Number one in sales and number one in returns
 WITH por_productos AS (
 	SELECT
 		pr.nombre, 
@@ -52,7 +52,7 @@ FROM por_productos
 ORDER BY unidades DESC
 LIMIT 1;
 
--- Cuánto cuesta las devoluciones de vestido alma
+-- How much Vestido Alma returns cost
 WITH alma AS (
 	SELECT 
 		ol.cantidad * ol.precio_unitario::NUMERIC * (1 - ol.descuento_pct::NUMERIC) AS ingreso, 
@@ -70,7 +70,7 @@ SELECT
 	ROUND(SUM(ingreso) FILTER(WHERE NOT devuelta) - SUM(coste) FILTER (WHERE NOT devuelta), 2) AS margen_neto 
 FROM alma;
 
--- Motivos de devoluciones
+-- Return reasons
 
 SELECT
 	motivo,
@@ -81,7 +81,7 @@ WHERE r.linea_id IN (SELECT linea_id FROM order_lines)
 GROUP BY motivo
 ORDER BY devoluciones DESC;
 
--- Ventas del Alma por talla en la campaña
+-- Vestido Alma sales by size in the campaign
 
 SELECT 
 	REPLACE(UPPER(TRIM(ol.talla)), 'TALLA ', '') AS talla, 
@@ -94,7 +94,7 @@ WHERE pr.nombre = 'Vestido Alma' AND s.campana_id = 1
 GROUP BY REPLACE(UPPER(TRIM(ol.talla)), 'TALLA ', '')
 ORDER BY unidades DESC;
 
--- ¿Siguen entrando devoluciones del Alma? 
+-- Are Alma returns still coming in?
 WITH dev_alma AS (
 	SELECT
 		r.fecha_devolucion
@@ -114,7 +114,7 @@ SELECT
 FROM dev_alma;	
 
 
--- tasa de devolucion por talla 
+-- Return rate by size
 WITH lineas_norm AS (
 	SELECT 
 		ol.linea_id, 
@@ -135,7 +135,7 @@ WHERE ln.talla IN('XS', 'S', 'M','L', 'XL')
 GROUP BY ln.talla
 ORDER BY CASE ln.talla WHEN 'XS' THEN 1 WHEN 'S' THEN 2 WHEN 'M' THEN 3 WHEN 'L' THEN 4 WHEN 'XL' THEN 5 END;
 
--- Cuanto del dinero de la campana se fue en devoluciones
+-- How much of the campaign revenue went to returns
 WITH camp AS (
 	SELECT 
 		ol.cantidad * ol.precio_unitario::NUMERIC * (1 - ol.descuento_pct::NUMERIC) AS ingreso, 
@@ -153,4 +153,4 @@ SELECT
 	ROUND(
 		SUM(ingreso) FILTER(WHERE devuelta) * 100.0 / SUM(ingreso), 1
 	) AS pct_devuelto
-FROM camp; 
+FROM camp;

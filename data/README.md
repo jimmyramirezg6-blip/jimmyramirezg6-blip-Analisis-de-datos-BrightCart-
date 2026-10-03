@@ -1,25 +1,25 @@
-# 📂 Datos del Proyecto
+# 📂 Project Data
 
-Los datos originales utilizados en este análisis provienen de una fuente externa y se descargaron de la web oficial/plataforma indicada a continuación. 
+The original data used in this analysis comes from an external source and was downloaded from the official website/platform listed below.
 
-Para mantener la ligereza del repositorio de Git y cumplir con las mejores prácticas de control de versiones, **los archivos `.csv` pesados no se almacenan en este repositorio**.
-
----
-
-## 🔗 Fuente Original de los Datos
-
-* **Origen / Plataforma:** Bigdatastack
-* **Enlace de Descarga Directa:** https://bigdatastack.dev/profesion/analisis-datos
-* **Descripción del Dataset:** Contiene los registros de líneas de pedido, productos, clientes y transacciones necesarios para el proceso de limpieza y análisis de datos.
+To keep the Git repository lightweight and follow version control best practices, **the large `.csv` files are not stored in this repository**.
 
 ---
 
-## 🚀 Instrucciones para Ejecutar el Proyecto
+## 🔗 Original Data Source
 
-Si deseas replicar este proyecto en tu entorno local:
+* **Source / Platform:** Bigdatastack
+* **Direct Download Link:** https://bigdatastack.dev/profesion/analisis-datos
+* **Dataset Description:** Contains order line, product, customer, and transaction records needed for the data cleaning and analysis process.
 
-1. Ingresa al enlace provisto arriba y descarga los archivos en formato `.csv`.
-2. Ubica los archivos descargados dentro de esta carpeta (`/data` o la ruta correspondiente en tu proyecto).
-3. Ejecuta los scripts de Python o los Notebooks de Jupyter en el orden indicado en la raíz del proyecto.
+---
 
-> **Nota:** La estructura de carpetas espera que los archivos mantengan sus nombres originales para que los scripts de Pandas puedan cargarlos automáticamente.
+## 🚀 Instructions to Run the Project
+
+If you want to reproduce this project in your local environment:
+
+1. Open the link above and download the files in `.csv` format.
+2. Place the downloaded files inside this folder (`/data` or the corresponding path in your project).
+3. Run the Python scripts or Jupyter notebooks in the order indicated at the project root.
+
+> **Note:** The folder structure expects the files to keep their original names so that the Pandas scripts can load them automatically.

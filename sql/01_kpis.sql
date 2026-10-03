@@ -1,4 +1,4 @@
--- Campaigns KPIs : 1 - 7 jul vs prev-week 24 -30 jun
+-- Campaign KPIs: Jul 1-7 vs previous week Jun 24-30
 SELECT 
 	CASE 
 		WHEN s.fecha_pedido BETWEEN DATE '2024-06-24' AND DATE '2024-06-30' THEN 'Semana previa'
@@ -20,7 +20,7 @@ WHERE s.fecha_pedido BETWEEN DATE '2024-06-24' AND DATE '2024-07-07'
 GROUP BY periodo
 ORDER BY periodo;
 
--- 
+--
 
 SELECT 
 	ROUND(
@@ -34,7 +34,7 @@ JOIN sales s ON ol.pedido_id = s.pedido_id
 WHERE s.campana_id = 1
 
 
--- 
+--
 SELECT 
 	ROUND(
 		SUM(ol.cantidad * ol.precio_unitario::NUMERIC * ol.descuento_pct::NUMERIC) 
@@ -88,7 +88,7 @@ SELECT
 	ROUND(((r.ticket - p.ticket)/p.ticket * 100)::NUMERIC, 1) AS crecimiento_ticket
 FROM previa p, rebajas r; 
 
--- ticket por canal
+-- Ticket by channel
 SELECT 
 	s.canal,
 	ROUND(
@@ -102,7 +102,7 @@ GROUP BY s.canal
 ORDER BY ticket_medio DESC;
 
 
--- Ticket promedio, mínimo y máximo
+-- Average, minimum, and maximum ticket
 WITH ticket_por_pedido AS (
 	SELECT 
 		ol.pedido_id, 
@@ -118,7 +118,7 @@ SELECT
 	ROUND(MAX(ticket::NUMERIC),2) AS pedido_más_alto
 FROM ticket_por_pedido
 
--- Método de pagos en rebajas
+-- Payment methods during the sale period
 SELECT
 	s.metodo_pago, 
 	SUM(ol.cantidad) AS unidades, 
@@ -140,4 +140,3 @@ ORDER BY unidades DESC
 	
 
 
-	

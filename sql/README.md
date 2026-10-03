@@ -1,6 +1,6 @@
 ## How to Run the Staging Script
 
-Before running the script, make sure you have **PostgreSQL** installed and that you're standing at the root of the repository (`proyecto_BrightCart`), since the script uses relative paths to read the CSVs from `data/processed/`.
+Before running the script, make sure you have **PostgreSQL** installed and that you're at the root of the repository (`proyecto_BrightCart`), since the script uses relative paths to read the CSV files from `data/processed/`.
 
 ### 1. Connect to the database
 
