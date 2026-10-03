@@ -1,7 +1,26 @@
 ## 📊 BrightCart Data Analysis Project
 
-In progress ...
+## 💼 Executive Summary
+This project analyzes a fashion e-commerce campaign.
 
+At the top line, the campaign was a success: revenue and units sold increased during the sale period.
+
+However, a deeper analysis of sales and returns shows that the best-selling product, `Vestido Alma`, was also the most returned item. That return pressure erased its profitability and left the product with a net margin of `-€60.31`.
+
+### 🎯 Key Findings
+- The campaign delivered higher revenue and higher unit volume.
+- `Vestido Alma` was the top-selling product with `1,016` units sold.
+- It generated `€30,473.90` in gross revenue and `€17,066.59` in net revenue after returns.
+- Its return rate reached `42.7%`.
+- Sizes `M` and `L` concentrated `86.3%` of all returns for that product.
+
+### 🤝 Business Implication
+Sales volume alone is not enough to judge performance. A product can lead revenue and still destroy margin if returns are high enough.
+
+### ⭐ Recommendation
+Pause or reduce restocking of `Vestido Alma` until sizing and return drivers are addressed.
+
+### Figures 
 
 ## 📁 Project structure
 ```
@@ -34,7 +53,7 @@ BrightCart Project/
 ```
 
 
-## How to Run the Staging Script
+## ▶️ How to Run the Staging Script
 
 Before running the script, make sure you have **PostgreSQL** installed and that you're standing at the root of the repository (`proyecto_BrightCart`), since the script uses relative paths to read the CSVs from `data/processed/`.
 
@@ -63,8 +82,13 @@ Once inside the `psql` console, run:
 
 This will create the necessary tables, load the data from `data/processed/`, and leave the database ready for analysis.
 
-### Requirements
+## 🧰 Tech Stack 
+- Analysis: Python, Pandas, PostgreSQL
+- Visualization: Matplotlib
+- Reporting: Jupyter Notebook
+- Version Control: Git / GitHub
 
+### 📝 Requirements
 - PostgreSQL installed and running on `localhost`
 - A database named `brightcart` already created
 - The CSV files present in `data/processed/`
